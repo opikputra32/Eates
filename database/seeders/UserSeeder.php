@@ -23,6 +23,14 @@ class UserSeeder extends Seeder
                 'email' => 'admin@mail.com',
                 'password' => bcrypt('admin'),
             ],
+            [
+                'full_name' => 'Mochammad Taufiek Pratama Putra',
+                'gender' => 'male',
+                'role' => 'member',
+                'address' => 'kantor scbd',
+                'email' => 'taufiek@mail.com',
+                'password' => bcrypt('taufiek'),
+            ],
         ]);
     }
 }

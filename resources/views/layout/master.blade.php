@@ -23,9 +23,6 @@
         </div>
     </nav>
 
-
-
-
     {{-- Navbar for each user role --}}
     <nav class="navbar navbar-expand navbar-light bg-light">
         <div class="container-fluid">

@@ -22,17 +22,14 @@ class CreateCartItemsTable extends Migration
             $table->timestamps();
 
             $table
-            ->foreign('product_id')
-            ->references('id')
-            ->on('products');
+                ->foreign('product_id')
+                ->references('id')
+                ->on('products');
 
             $table
-            ->foreign('cart_id')
-            ->references('id')
-            ->on('carts');
-
-
-
+                ->foreign('cart_id')
+                ->references('id')
+                ->on('carts');
         });
     }
 

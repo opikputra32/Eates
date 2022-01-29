@@ -45,7 +45,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function cart(){
+    public function cart()
+    {
         return $this->hasOne(Cart::class);
+    }
+
+    /**
+     * Get the transaction that owns the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function transaction()
+    {
+        return $this->belongsTo(Transactions::class);
     }
 }

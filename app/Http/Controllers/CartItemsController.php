@@ -4,15 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\CartItems;
+use App\Models\Courier;
 use Illuminate\Http\Request;
 
 class CartItemsController extends Controller
 {
     public static function handleCart(Request $request)
     {
+        // dd($request);
         $request->validate([
             'quantity' => 'required|gt:0'
         ]);
+
         $curId = Cart::getId();
         foreach ($curId as $id) {
             /**
@@ -55,7 +58,8 @@ class CartItemsController extends Controller
             [
                 'cartItems' => $cartItems,
                 'total' => $total,
-                'isCartItemExists' => $isCartItemExists
+                'isCartItemExists' => $isCartItemExists,
+                'couriers' => Courier::get()
             ]
 
         );

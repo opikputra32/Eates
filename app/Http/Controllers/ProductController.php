@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\CartItems;
+use App\Models\Courier;
 use App\Models\ProductCategories;
 use App\Models\Products;
 use Illuminate\Http\Request;
@@ -14,6 +15,7 @@ class ProductController extends Controller
 {
     public function home()
     {
+
         return view('page.home', ['productList' => Products::paginate(6)]);
     }
     public static function handleDetail($id)

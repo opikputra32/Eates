@@ -21,4 +21,14 @@ class Products extends Model
     {
         return $this->hasOne(ProductCategories::class);
     }
+
+    /**
+     * Get the order_item that owns the Products
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function order_item()
+    {
+        return $this->belongsTo(OrderItem::class);
+    }
 }

@@ -22,16 +22,14 @@ class CreateOrderItemsTable extends Migration
             $table->timestamps();
 
             $table
-            ->foreign('product_id')
-            ->references('id')
-            ->on('products');
+                ->foreign('product_id')
+                ->references('id')
+                ->on('products');
 
             $table
-            ->foreign('transaction_id')
-            ->references('id')
-            ->on('transactions');
-
-
+                ->foreign('transaction_id')
+                ->references('id')
+                ->on('transactions');
         });
     }
 

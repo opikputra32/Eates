@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class CartSeeder extends Seeder
+class CourierSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,14 +14,10 @@ class CartSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('carts')->insert(
+        DB::table('couriers')->insert(
             [
-                [
-                    'user_id' => 1,
-                ],
-                [
-                    'user_id' => 2,
-                ],
+                ['name' => 'Eates Express'],
+                ['name' => 'Restaurant Express'],
             ]
         );
     }

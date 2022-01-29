@@ -3,10 +3,11 @@
 @section('title', 'Home')
 
 @section('content')
+    {{-- {{ dd($couriers) }} --}}
     <div class="card mb-3 m-5">
         <div class="row g-0">
             <div class="col-md-5">
-                <img src={{ asset($product->image )}} class="img-fluid rounded-start" alt="Gambar {{$product->name}}">
+                <img src={{ asset($product->image) }} class="img-fluid rounded-start" alt="Gambar {{ $product->name }}">
             </div>
             <div class="col-md-6 ml-2">
                 <div class="card-body">

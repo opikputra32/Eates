@@ -16,15 +16,20 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id('id');
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('courier_id');
             $table->bigInteger('total');
             $table->timestamp('transaction_date')->useCurrent();
-            $table->string('status');
+            $table->enum('status', ['ON-PROCESS', 'ARRIVED', 'ON-DELIVERY']);
             $table->timestamps();
 
             $table
                 ->foreign('user_id')
                 ->references('id')
                 ->on('users');
+            $table
+                ->foreign('courier_id')
+                ->references('id')
+                ->on('couriers');
         });
     }
 

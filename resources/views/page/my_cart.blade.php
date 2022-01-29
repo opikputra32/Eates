@@ -4,11 +4,11 @@
 
 @section('content')
     @if (session()->has('success'))
-            <div class="mb-3">
-                <div class="alert alert-success" role="alert">
-                    {{ session('success') }}
-                </div>
+        <div class="mb-3">
+            <div class="alert alert-success" role="alert">
+                {{ session('success') }}
             </div>
+        </div>
     @endif
     <div class="container-fluid">
         @if ($cartItems->isEmpty())
@@ -32,15 +32,15 @@
                                 <h3 class="card-title text-bold mb-2">{{ $product->name }} </h3>
                                 <p class="text-muted"><sup>(@currency($product->price))</sup></p>
                             </div>
+                            {{-- <p class="card-text">{{ App\Models\Courier::find($product->courier_id) }}</p> --}}
+                            {{ $product->courier_id }}
                             <h6 class="card-subtitle text-muted mb-4">
                                 x{{ $product->quantity }} pcs
                             </h6>
                         </div>
                         <p class="card-text">@currency($product->product_price)</p>
                         @auth
-                            <div class="d-flex justify-content-between" style="
-                                width: 8rem">
-
+                            <div class="d-flex justify-content-between" style="width: 8rem">
                                 <form action="{{ '/my-cart/' . $product->id . '/edit' }}" method="GET">
                                     @csrf
                                     <button class="btn btn-warning" type="submit">Edit</button>
@@ -59,20 +59,25 @@
                 </div>
             </div>
         @endforeach
-        @if (!($cartItems->isEmpty()))
+        @if (!$cartItems->isEmpty())
 
-        <div class="d-flex justify-content-between">
-            <div class="container">
-                <h5 class="font-weight-bold">Total Price: </h5>
-                <p class="text-muted m-2">@currency($total)</p>
-            </div>
+            <div class="d-flex justify-content-between mb-3">
+                <div class="container">
+                    <h5 class="font-weight-bold">Total Price: </h5>
+                    <p class="text-muted m-2">@currency($total)</p>
+                </div>
 
-                <form action="{{route('posts.order')}}" method="post">
+                <form action="{{ route('posts.order') }}" method="post">
                     @csrf
-                    <input type="hidden" name="total" value="{{$total}}">
-                    <button type="submit" class="btn btn-warning">Checkout({{$cartItems->count()}})</button>
-            </form>
-        </div>
+                    <select class="form-select mb-3" aria-label="Default select example" name="courier_id">
+                        @foreach ($couriers as $courier)
+                            <option value={{ $courier->id }}>{{ $courier->name }}</option>
+                        @endforeach
+                    </select>
+                    <input type="hidden" name="total" value="{{ $total }}">
+                    <button type="submit" class="btn btn-warning float-end">Checkout({{ $cartItems->count() }})</button>
+                </form>
+            </div>
         @endif
     </div>
 

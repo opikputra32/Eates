@@ -22,8 +22,9 @@ class OrderItemController extends Controller
             $transactions = new Transactions();
             $transactions->user_id = $id->id;
             $transactions->total = $request->total;
-            $transactions->status = 'Shipping';
+            $transactions->status = 1;
             $transactions->transaction_date = Carbon::now()->toDateTimeString();
+            $transactions->courier_id = $request->courier_id;
             $transactions->save();
             $cartItems = CartItems::getCartItemByUser($id->id)->get();
             foreach ($cartItems as $CartItems => $product) {
