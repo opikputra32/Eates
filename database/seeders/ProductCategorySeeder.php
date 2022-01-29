@@ -15,9 +15,10 @@ class ProductCategorySeeder extends Seeder
     public function run()
     {
         DB::table('product_categories')->insert([
-            ['category' => 'Television'],
-            ['category' => 'Laptop'],
-            ['category' => 'Smartphone'],
+            ['category' => 'Burger'],
+            ['category' => 'Menu Goceng'],
+            ['category' => 'Menu Ala Carte'],
+            ['category' => 'Setiap Hari Bokek'],
         ]);
     }
 }

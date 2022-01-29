@@ -15,7 +15,7 @@
                     <hr>
                     <h3>Category:</h3>
                     <h6 class="card-subtitle text-muted">
-                        {{ $product->category_id == 1 ? 'Television' : ($product->category_id == 2 ? 'Laptop' : 'Smartphone') }}
+                        {{ App\Models\ProductCategories::find($product->category_id)->category }}
                     </h6>
                     <hr>
                     <h3 class="text-bold">Price</h3>
